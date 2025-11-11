@@ -2,19 +2,19 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Login</title>
+  <title>Login to my account</title>
   <link rel="stylesheet" href="/static/style.css">
 </head>
 <body>
   <div class="container">
-    <h2>Login</h2>
+    <h2>login</h2>
     <form method="post" action="/login">
-      <input type="email" name="email" placeholder="Email" required>
+      <input type="email" name="Email" placeholder="email" required>
       <input type="password" name="password" placeholder="Password" required>
-      <button type="submit">Login</button>
+      <button type="submit">login</button>
     </form>
     <form method="get" action="/register">
-      <button type="submit">Create an account</button>
+      <button type="submit">Create new account</button>
     </form>
     {% if message %}
       <p>{{ message }}</p>
