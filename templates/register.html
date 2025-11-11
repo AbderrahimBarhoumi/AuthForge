@@ -2,12 +2,12 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Register</title>
+  <title>SignUp</title>
   <link rel="stylesheet" href="/static/style.css">
 </head>
 <body>
   <div class="container">
-    <h2>Register new account</h2>
+    <h3>Sign Up New account</h3>
     <form method="post" action="/register">
       <input type="text" name="FirstName" placeholder="FirstName" required>
       <input type="text" name="LastName" placeholder="LastName" required>
@@ -18,7 +18,7 @@
       <button type="submit">Register</button>
     </form>
     <form method="get" action="/login">
-      <button type="submit">Already have an account?</button>
+      <button type="submit">Log into my account</button>
     </form>
     {% if message %}
       <p>{{ message }}</p>
