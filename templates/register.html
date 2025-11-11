@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Register</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <div class="container">
+    <h2>Register new account</h2>
+    <form method="post" action="/register">
+      <input type="text" name="FirstName" placeholder="FirstName" required>
+      <input type="text" name="LastName" placeholder="LastName" required>
+      <input type="number" name="Age" placeholder="Age" required>
+      <input type="email" name="email" placeholder="email" required>
+      <input type="password" name="password" placeholder="Password" required>
+      <input type="text" name="role" placeholder="Role (e.g. user/admin)">
+      <button type="submit">Register</button>
+    </form>
+    <form method="get" action="/login">
+      <button type="submit">Already have an account?</button>
+    </form>
+    {% if message %}
+      <p>{{ message }}</p>
+    {% endif %}
+  </div>
+</body>
+</html>

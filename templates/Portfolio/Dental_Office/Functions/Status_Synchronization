@@ -1,0 +1,9 @@
+--Update payment status to 'paid' for people who paid their appointments
+CREATE OR REPLACE FUNCTION sync_to_paid_status()
+RETURNS VOID AS $$
+BEGIN 
+  UPDATE billing
+	SET payment_status = 'paid'
+	WHERE payment_date IS NOT NULL;
+END;
+$$ LANGUAGE plpgsql;
