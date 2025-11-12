@@ -1,5 +1,3 @@
-# app/main.py
-
 from fastapi import FastAPI, Request, Form, Depends
 from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
@@ -9,22 +7,22 @@ from passlib.context import CryptContext
 from app.database import session_local, Engine, base
 from app.models import User
 
-# Create database tables
+# Set database tables
 base.metadata.create_all(bind=Engine)
 
 # Initialize FastAPI app
 app = FastAPI()
 
-# Mount static files (CSS, JS)
+# Mount Javascript, CSS Static files
 app.mount("/static", StaticFiles(directory="static"), name="static")
 
 # Set up Jinja2 templates
-templates = Jinja2Templates(directory="templates")
+Templates = Jinja2Templates(directory="templates")
 
 # Password hashing
-pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
+PWD_Context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
-# Dependency to get DB session
+#Set Dependency to get db session
 def get_db():
     db = session_local()
     try:
@@ -32,12 +30,12 @@ def get_db():
     finally:
         db.close()
 
-# GET: Login form
+# Create GET Login Form
 @app.get("/login", response_class=HTMLResponse)
 def login_form(request: Request):
     return templates.TemplateResponse("login.html", {"request": request})
 
-# POST: Login handler
+# Create POST Login Handler
 @app.post("/login", response_class=HTMLResponse)
 def login_user(request: Request, email: str = Form(...), password: str = Form(...), db: Session = Depends(get_db)):
     user = db.query(User).filter(User.Email == email).first()
@@ -45,12 +43,12 @@ def login_user(request: Request, email: str = Form(...), password: str = Form(..
         return templates.TemplateResponse("login.html", {"request": request, "message": "Login successful!"})
     return templates.TemplateResponse("login.html", {"request": request, "message": "Invalid credentials."})
 
-# GET: Register form
+# Create GET Register Form
 @app.get("/register", response_class=HTMLResponse)
 def register_form(request: Request):
     return templates.TemplateResponse("register.html", {"request": request})
 
-# POST: Register handler
+# Create POST Register Handler
 @app.post("/register", response_class=HTMLResponse)
 def register_user(request: Request, 
                   FirstName:str = Form(...),
