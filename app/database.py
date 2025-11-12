@@ -4,7 +4,7 @@ from sqlalchemy import create_engine
 import os
  
 #Load PostgreSQL URL 
-db_URL = os.getenv("db_URL", "postgresql+psycopg2://postgres:jqik2935@localhost:5432/authforge")
+db_URL = os.getenv("db_URL", "postgresql+psycopg2://postgres:password@localhost:5432/authforge")
 
 # Create the Base for the classes
 base = declarative_base()
