@@ -1,4 +1,3 @@
-# app/utils.py
 from passlib.context import CryptContext
 from jose import jwt
 from datetime import datetime, timedelta
@@ -7,7 +6,7 @@ from datetime import datetime, timedelta
 SECRET_KEY = "your-secret-key"
 ALGORITHM = "HS256"
 
-#bcrypt hashing Cconfiguration 
+#bcrypt hashing C configuration 
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
 #Plain text conversion into a secure hash
